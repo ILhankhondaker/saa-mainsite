@@ -34,6 +34,8 @@ jobs:
           fi
       - name: Install without dependency lifecycle scripts
         run: npm ci --ignore-scripts --no-fund --no-audit
+      - name: Generate Prisma client (postinstall is disabled for safety)
+        run: npx prisma generate
       - name: Build application
         run: npm run build
       - name: Audit high and critical vulnerabilities
